@@ -8,13 +8,16 @@ from api.serializer import NseSerializer, NseArgvSerializer
 
 class CategoryFilterBackend(filters.BaseFilterBackend):
     """
-    Filter that only allows users to see their own objects.
+    Categoryのフィルタ
     """
     def filter_queryset(self, request, queryset, view):
         queryset = Nse.objects.all()
-        category = request.query_params.get('category', None)
-        if category is not None:
-             queryset = queryset.filter(category__contains=category)
+        name = request.query_params.get('name', "")
+        category = request.query_params.get('category', "")
+        author = request.query_params.get('author', "")
+
+        queryset = queryset.filter(name__contains=name) & queryset.filter(category__contains=category) & queryset.filter(author__contains=author)
+
         return queryset
 
 
