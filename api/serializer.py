@@ -7,7 +7,7 @@ class NseArgvSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = NseArgv
-        fileds = ('argv', 'argv_discription', 'argv_discription_ja')
+        fileds = ('argv', 'argv_description', 'argv_description_ja')
 
 class NseSerializer(serializers.ModelSerializer):
     """

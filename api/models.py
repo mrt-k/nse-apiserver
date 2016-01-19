@@ -29,7 +29,7 @@ class Nse(models.Model):
     author : 作者
     download_link : スクリプトへのリンク
     """
-    
+
     CATEGORIES = (
             ("auth", "auth"),
             ("broadcast", "broadcast"),
@@ -49,11 +49,11 @@ class Nse(models.Model):
 
     name = models.CharField(max_length=128)
     category = MultiSelectField(max_length=128, choices=CATEGORIES)
-    summary = models.TextField()
+    summary = models.TextField(blank=True)
     summary_ja = models.TextField(blank=True)
-    argvs = models.ManyToManyField(NseArgv)
-    example_usage = models.TextField()
-    example_output = models.TextField()
+    argvs = models.ManyToManyField(NseArgv, blank=True)
+    example_usage = models.TextField(blank=True)
+    example_output = models.TextField(blank=True)
     author = models.CharField(max_length=128)
     download_link = models.URLField()
 
