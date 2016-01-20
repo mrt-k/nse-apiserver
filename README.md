@@ -6,8 +6,7 @@ NSE(Nmap Scripting Engine) API Server
 
 # これはなに
 
-Nmapに付属しているNSEを検索しやすくするRESTful APIサーバーです。  
-curlなどで投げてあげると以下のような結果が返ってきます.
+Nmapに付属しているNSEを検索しやすくするREST APIサーバーです。  
 
 ```
 [
@@ -41,6 +40,7 @@ ist=-1 to see all.",
   },
 
 ```
+# 項目
 
 * name : スクリプト名
 * category : カテゴリ名
@@ -58,14 +58,6 @@ ist=-1 to see all.",
 
 ===
 
-# データ
-
-NSEのデータはまだ未完成です。  
-[NSE Doc](https://nmap.org/nsedoc/index.html)からデータを地道に投入していくつもりです。  
-データはdb.jsonとして保存してあるので, データを追加してプルリクしていただけると助かります。
-
-===
-
 # Install
 
 ```
@@ -74,7 +66,8 @@ cd nse-apiserver
 ./manage.py makemigrations
 ./manage.py migrate
 ./manage.py createsuperuser
-./manage.py loaddata db.json
+./manage.py loaddata extra/json/libdb.json
+./manage.py loaddata extra/json/scriptdb.json
 ```
 
 ===
@@ -185,5 +178,4 @@ $ curl http://localhost:8000/api/nse/\?search\=auth | jq
 
 # TODO
 
-* めっちゃある
-
+* 日本語訳

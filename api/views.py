@@ -2,7 +2,6 @@
 import django_filters
 from rest_framework import viewsets, filters
 from rest_framework import generics
-
 from api.models import Nse, NseArgv
 from api.serializer import NseSerializer, NseArgvSerializer
 
@@ -24,6 +23,8 @@ class CategoryFilterBackend(filters.BaseFilterBackend):
 class NseArgvViewSet(viewsets.ModelViewSet):
     queryset = NseArgv.objects.all()
     serializer_class = NseArgvSerializer
+    http_method_names = ['get']
+
 
 
 class NseViewSet(viewsets.ModelViewSet):
@@ -32,3 +33,4 @@ class NseViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter, CategoryFilterBackend)
     filter_fields = ('name', 'category', 'author')
     search_fields = ('name', 'category', 'author')
+    http_method_names = ['get']
