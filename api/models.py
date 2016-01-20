@@ -12,6 +12,9 @@ class NseArgv(models.Model):
     argv_description = models.TextField(blank=True)
     argv_description_ja = models.TextField(blank=True)
 
+    class Meta:
+        ordering = ['argv']
+
     def __str__(self):
         return "%s" % (self.argv)
 
@@ -54,8 +57,9 @@ class Nse(models.Model):
     argvs = models.ManyToManyField(NseArgv, blank=True)
     example_usage = models.TextField(blank=True)
     example_output = models.TextField(blank=True)
-    author = models.CharField(max_length=128)
-    download_link = models.URLField()
+    author = models.CharField(max_length=128, blank=True)
+    download_link = models.URLField(blank=True)
+
 
     def __str__(self):
         return "%s" % (self.name)
